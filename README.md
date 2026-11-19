@@ -1,2 +1,29 @@
-# sham-cash
-for pay for my money and you can receive the money immediately you will get the money 
+# ShamCash
+
+نموذج محفظة ويب عربي مبني بـ Flask وSQLite، مع جلسات آمنة وكلمات مرور مجزأة وتحويلات تجريبية داخلية بين الحسابات المسجلة.
+
+## التشغيل المحلي
+
+```bash
+python -m pip install -r requirements.txt
+python main.py
+```
+
+افتح `http://127.0.0.1:5000` وأنشئ حسابين تجريبيين للاختبار. واجهة التحويل تقبل اسم مستخدم موجوداً فقط؛ لا يتم إرسال أموال حقيقية.
+
+## الاختبارات
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+يمكن فحص جاهزية الخادم عبر `GET /api/health`.
+
+## إعداد الإنتاج
+
+- عيّن `SECRET_KEY` إلى قيمة عشوائية قوية وثابتة.
+- استخدم HTTPS واضبط `COOKIE_SECURE=true`.
+- اضبط `DATABASE_PATH` على تخزين دائم وقابل للكتابة؛ أنظمة الملفات المؤقتة تمسح بيانات SQLite بعد إعادة التشغيل.
+- لا تضع أسراراً في ملفات JavaScript العامة ولا تنشر قاعدة البيانات.
+
+هذا المشروع نموذج أولي، وليس نظام دفع أو مصرفاً مرخصاً.
